@@ -1,11 +1,17 @@
 import maya.cmds as cmds
 
+# Rename all selected objects
+#kitList = cmds.ls(sl=True)
+#for part in kitList:
+#    cmds.rename(str(part), 'ship_' + str(part))
+
+# Select all kit parts for export by naming convention
 kitList = cmds.ls('ship_*')
 transformList = cmds.listRelatives(kitList, parent=True, fullPath=True)
 
 exportDir = "/Users/delainey/Documents/School/Goldsmiths/Intro to Modeling and Animation/MarshEffect/modelExports/"
 
-#iterate through all transform nodes
+# Iterate through all transform nodes
 for part in transformList:
     cmds.select(part)
 
