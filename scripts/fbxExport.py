@@ -24,6 +24,9 @@ for part in transformList:
     cmds.setAttr(str(part) + ".translateX", 0)
     cmds.setAttr(str(part) + ".translateY", 0)
     cmds.setAttr(str(part) + ".translateZ", 0)
+
+    #make object double sided
+    cmds.setAttr(str(part) + ".doubleSided", 1)
          
     #freeze transforms
     cmds.makeIdentity(apply=True, t=1, r=1, s=1, n=0, pn=1)
@@ -39,3 +42,6 @@ for part in transformList:
     cmds.setAttr(str(part) + ".translateX", x)
     cmds.setAttr(str(part) + ".translateY", y)
     cmds.setAttr(str(part) + ".translateZ", z)
+
+    #make object single sided
+    cmds.setAttr(str(part) + ".doubleSided", 0)
