@@ -1,11 +1,17 @@
 import maya.cmds as cmds
 
+# Rename all selected objects
+#kitList = cmds.ls(sl=True)
+#for part in kitList:
+#    cmds.rename(str(part), 'ship_' + str(part))
+
+# Select all kit parts for export by naming convention
 kitList = cmds.ls('ship_*')
 transformList = cmds.listRelatives(kitList, parent=True, fullPath=True)
 
 exportDir = "/Users/delainey/Documents/School/Goldsmiths/Intro to Modeling and Animation/MarshEffect/modelExports/"
 
-#iterate through all transform nodes
+# Iterate through all transform nodes
 for part in transformList:
     cmds.select(part)
 
@@ -18,6 +24,9 @@ for part in transformList:
     cmds.setAttr(str(part) + ".translateX", 0)
     cmds.setAttr(str(part) + ".translateY", 0)
     cmds.setAttr(str(part) + ".translateZ", 0)
+
+    #make object double sided
+    cmds.setAttr(str(part) + ".doubleSided", 1)
          
     #freeze transforms
     cmds.makeIdentity(apply=True, t=1, r=1, s=1, n=0, pn=1)
@@ -33,3 +42,6 @@ for part in transformList:
     cmds.setAttr(str(part) + ".translateX", x)
     cmds.setAttr(str(part) + ".translateY", y)
     cmds.setAttr(str(part) + ".translateZ", z)
+
+    #make object single sided
+    cmds.setAttr(str(part) + ".doubleSided", 0)
